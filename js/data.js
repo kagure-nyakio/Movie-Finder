@@ -44,7 +44,7 @@ function getMovies(searchString) {
         imdbID: data.imdbID
     }
     let movie = new Movie(movieData)
-    // movies.push(movie) 
+    movies.push(movie) 
     
     // document.querySelector(".movie-display").innerHTML += movie.renderHtml()
    })
