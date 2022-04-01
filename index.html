@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Movie Finder</title>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="intro">
+        <h1 class="accent-text">Find your film</h1>
+        <a href="watchlist.html" class="accent-text toggle-page-link">My Watchlist</a>
+      </div>
+
+      <form action="#" class="search-form">
+        <input type="search" name="search-movie" id="search-movie" results=5 placeholder="Search for a movie">
+        <button type="submit" class="btn btn-search">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <main class="main">
+      <section class="content-display">   
+        <img src="images/home-icon.svg" alt="">
+        <p class="content-display__text">Start exploring</p>
+      </section>
+
+      <section class="movie-display container"></section>
+        
+  </main>
+  <script src="js/script.js" type="module"></script>
+</body>
+</html>
+
