@@ -1,6 +1,6 @@
 import Movie from "./Movie.js"
 
-const baseURL = "http://www.omdbapi.com/?apikey=d932efde&"
+const baseURL = "https://www.omdbapi.com/?apikey=d932efde&"
 
 const contentDisplaySection  = document.querySelector('.content-display')
 const movieDisplaySection    = document.querySelector(".movie-display")
