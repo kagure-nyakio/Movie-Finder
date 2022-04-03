@@ -1,4 +1,3 @@
-// Only retrive data
 import Movie from "./Movie.js"
 
 const baseURL = "http://www.omdbapi.com/?apikey=d932efde&"
