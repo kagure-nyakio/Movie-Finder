@@ -87,6 +87,7 @@ ul {
 .movie-plot-text {
   color: var(--secondary-clr);
   margin: 0;
+  text-align: left;
 }
 
 /* LAYOUT */
