@@ -4,7 +4,8 @@ import Movie from "./Movie.js"
 const baseURL = "http://www.omdbapi.com/?apikey=d932efde&"
 
 const contentDisplaySection  = document.querySelector('.content-display')
-let movies = [] 
+const movieDisplaySection    = document.querySelector(".movie-display")
+const watchListSection       = document.querySelector(".watchlist")
 
 function getMovies(searchString) { 
   fetch(`${baseURL}s=${searchString}`)
@@ -15,7 +16,39 @@ function getMovies(searchString) {
       return res.json()
     })
     .then(data =>  {
-      getMovieDetails(data.Search)
+      let urlPromises = []
+      data.Search.map(movie => urlPromises.push( fetch(`${baseURL}i=${movie.imdbID}`)))
+      return urlPromises      
+    })
+    .then(promiseArr => Promise.all(promiseArr))
+    .then(responses => responses.map(res => res.json()))
+    .then(resp => Promise.all(resp))
+    .then(data => {
+      let movies = []
+      
+      // Refine Data
+      data.map(movie => {
+        movies.push(new Movie(extractMovieDetails(movie)))
+      })
+
+      //  Render index.html
+      movies.map(movie => {
+        movieDisplaySection.innerHTML += movie.renderHtml() 
+      })
+
+      // Add to watchlist
+      const watchListBtns = document.getElementsByClassName('add-watchlist-btn')
+      for(let i = 0; i < watchListBtns.length; i++) {
+        watchListBtns[i].addEventListener('click', () => {
+          movies.map(movie  => {
+            if (movie.imdbID === data[i].imdbID && movie.isSaved === false) {
+              movie.addToLocalStorage()
+              movie.isSaved = true 
+              let savedMovie = new Movie(movie.retriveFromLocalStorage())
+              console.log(watchListSection) // why is it null?
+            } 
+          })   
+        })}
     })
     .catch(err => {
     contentDisplaySection.innerHTML = `
@@ -27,28 +60,18 @@ function getMovies(searchString) {
      })
  } 
 
- function  getMovieDetails(movieArray) {
-   movieArray.map(movie => {
-    fetch(`${baseURL}i=${movie.imdbID}`)
-    .then(res => {
-      return res.json()
-    })
-    .then(data => {
-      const movieData = {
+function  extractMovieDetails(data) {
+  return {
         title: data.Title, 
         poster: data.Poster, 
         rating:data.Rating, 
         runtime: data.Runtime, 
         genre: data.Genre, 
         plot: data.Plot,
-        imdbID: data.imdbID
+        imdbID: data.imdbID,
+        isSaved: false
     }
-    let movie = new Movie(movieData)
-    movies.push(movie) 
-    
-    // document.querySelector(".movie-display").innerHTML += movie.renderHtml()
-   })
-  })
+
 }
 
 export { getMovies } 

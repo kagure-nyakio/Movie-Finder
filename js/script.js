@@ -1,14 +1,16 @@
+document.addEventListener('DOMContentLoaded' , console.log('dom loaded'))
 import { getMovies } from "./data.js"
-import Movie from "./Movie.js"
+
 
 const contentDisplaySection  = document.querySelector('.content-display')
 const movieDisplaySection    = document.querySelector(".movie-display")
 
 const searchFormEl           = document.querySelector('.search-form')
 const searchMovieInput       = document.querySelector('#search-movie')
+const watchListSection       = document.querySelector(".watchlist")
 
-// const watchListEl            = document.querySelector('.add-movies')
 
+// Render to index html
 searchFormEl.addEventListener('submit', (event) => {
   event.preventDefault()
 
@@ -20,6 +22,8 @@ searchFormEl.addEventListener('submit', (event) => {
   contentDisplaySection.style.display = 'none'
 
   searchFormEl.reset()
+  console.log(watchListSection)
+
 })
 
 // Clear DOM when user starts typing
@@ -28,10 +32,3 @@ searchMovieInput.addEventListener('input' , () => {
   movieDisplaySection.style.display = "none"
   contentDisplaySection.style.display = 'block'
 })
-
-
-// movieDisplaySection.addEventListener('click', (e) => {
-//   if(e.target.classList.contains('add-watchlist-btn')) {
-//     movie.addToLocalStorage()
-//   } 
-// }

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <title>Movie Finder-Watchlist</title>
 </head>
-<body>
+<body class="watchlist">
   <header>
     <div class="container intro">
       <h1 class="accent-text">My Watchlist</h1>
@@ -19,19 +19,21 @@
   <main class="main">
     <div class="container">
       <section class="content-display">
-        <p class="content-display__text">Your watchlist is looking a little empty...</p>
-
-        <div class="add-movies">
-          <p class="add-movies__text">Let’s add some movies!</p>
-          <a href="index.html" class="icon-link">
-            <img src="images/add.svg" alt="">
-          </a>
+        <!-- <div id="watchlist"></div> -->
+        <div class="intro-content">
+          <p class="content-display__text">Your watchlist is looking a little empty...</p>
+          <div class="add-movies">
+            <p class="add-movies__text">Let’s add some movies!</p>
+            <a href="index.html" class="icon-link">
+              <img src="images/add.svg" alt="">
+            </a>
+          </div>
         </div>
 
       </section>
     </div>
   </main>
-  <script src="js/script.js" type="module"></script>
+  <script src="./js/script.js" type="module"></script>
 </body>
 </html>
 

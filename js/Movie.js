@@ -39,9 +39,12 @@ class Movie {
 
   }
 
-  // Add the instance to local storage
   addToLocalStorage() {
     localStorage.setItem(`${this.imdbID}`, JSON.stringify(this))
+  }
+
+  retriveFromLocalStorage() {
+    return JSON.parse(localStorage.getItem(`${this.imdbID}`))
   }
 
   removeFromLocalStorage() {
