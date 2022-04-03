@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded' , console.log('dom loaded'))
 import { getMovies } from "./data.js"
 
 

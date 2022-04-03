@@ -25,7 +25,7 @@ function getMovies(searchString) {
     .then(resp => Promise.all(resp))
     .then(data => {
       let movies = []
-      
+
       // Refine Data
       data.map(movie => {
         movies.push(new Movie(extractMovieDetails(movie)))
@@ -44,8 +44,6 @@ function getMovies(searchString) {
             if (movie.imdbID === data[i].imdbID && movie.isSaved === false) {
               movie.addToLocalStorage()
               movie.isSaved = true 
-              let savedMovie = new Movie(movie.retriveFromLocalStorage())
-              console.log(watchListSection) // why is it null?
             } 
           })   
         })}
