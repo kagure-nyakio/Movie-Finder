@@ -4,7 +4,6 @@ const baseURL = "http://www.omdbapi.com/?apikey=d932efde&"
 
 const contentDisplaySection  = document.querySelector('.content-display')
 const movieDisplaySection    = document.querySelector(".movie-display")
-const watchListSection       = document.querySelector(".watchlist")
 
 function getMovies(searchString) { 
   fetch(`${baseURL}s=${searchString}`)
@@ -41,12 +40,13 @@ function getMovies(searchString) {
         watchListBtns[i].addEventListener('click', () => {
           movies.map(movie  => {
             if (movie.imdbID === data[i].imdbID && movie.isSaved === false) {
-              movie.addToLocalStorage()
               movie.isSaved = true 
+              movie.addToLocalStorage() 
             } 
           })   
         })}
     })
+
     .catch(err => {
     contentDisplaySection.innerHTML = `
         <p class = "content-display__text">
@@ -61,7 +61,7 @@ function  extractMovieDetails(data) {
   return {
         title: data.Title, 
         poster: data.Poster, 
-        rating:data.Rating, 
+        rating:data.Ratings[0].Value, 
         runtime: data.Runtime, 
         genre: data.Genre, 
         plot: data.Plot,

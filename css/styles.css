@@ -188,7 +188,8 @@ ul {
   font-size: .85rem;
 }
 
-.add-watchlist-btn {
+.add-watchlist-btn,
+.remove-watchlist-btn {
   cursor: pointer;
   background: transparent;
   border: 0;
@@ -200,7 +201,9 @@ ul {
 }
 
 .add-watchlist-btn:hover,
-.add-watchlist-btn:focus {
+.add-watchlist-btn:focus,
+.remove-watchlist-btn:hover,
+.remove-watchlist-btn:focus{
   background: #FFC075;
 }
 
